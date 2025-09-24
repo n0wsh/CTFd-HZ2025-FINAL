@@ -1,0 +1,461 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Updated to cleaner blue-focused theme with better contrast */
+  --background: oklch(0.06 0.01 240); /* Deeper, cleaner dark blue */
+  --foreground: oklch(0.98 0.005 240); /* Crisp white with subtle blue tint */
+  --card: oklch(0.1 0.02 240); /* Clean dark blue cards */
+  --card-foreground: oklch(0.95 0.01 240);
+  --popover: oklch(0.1 0.02 240);
+  --popover-foreground: oklch(0.95 0.01 240);
+  --primary: oklch(0.7 0.2 220); /* Refined bright blue */
+  --primary-foreground: oklch(0.06 0.01 240);
+  --secondary: oklch(0.15 0.03 240); /* Subtle blue-gray */
+  --secondary-foreground: oklch(0.9 0.01 240);
+  --muted: oklch(0.12 0.02 240);
+  --muted-foreground: oklch(0.65 0.02 240);
+  --accent: oklch(0.75 0.15 200); /* Clean cyan accent */
+  --accent-foreground: oklch(0.06 0.01 240);
+  --destructive: oklch(0.65 0.25 15); /* Refined orange-red */
+  --destructive-foreground: oklch(0.98 0.005 240);
+  --border: oklch(0.2 0.03 240);
+  --input: oklch(0.15 0.03 240);
+  --ring: oklch(0.7 0.2 220);
+  --chart-1: oklch(0.7 0.2 220); /* Primary blue */
+  --chart-2: oklch(0.75 0.15 200); /* Cyan */
+  --chart-3: oklch(0.65 0.25 15); /* Orange */
+  --chart-4: oklch(0.72 0.18 260); /* Purple-blue */
+  --chart-5: oklch(0.68 0.22 180); /* Teal */
+  --radius: 0.75rem;
+  --sidebar: oklch(0.1 0.02 240);
+  --sidebar-foreground: oklch(0.95 0.01 240);
+  --sidebar-primary: oklch(0.7 0.2 220);
+  --sidebar-primary-foreground: oklch(0.06 0.01 240);
+  --sidebar-accent: oklch(0.15 0.03 240);
+  --sidebar-accent-foreground: oklch(0.9 0.01 240);
+  --sidebar-border: oklch(0.2 0.03 240);
+  --sidebar-ring: oklch(0.7 0.2 220);
+}
+
+.dark {
+  /* Same as root for consistency */
+  --background: oklch(0.06 0.01 240);
+  --foreground: oklch(0.98 0.005 240);
+  --card: oklch(0.1 0.02 240);
+  --card-foreground: oklch(0.95 0.01 240);
+  --popover: oklch(0.1 0.02 240);
+  --popover-foreground: oklch(0.95 0.01 240);
+  --primary: oklch(0.7 0.2 220);
+  --primary-foreground: oklch(0.06 0.01 240);
+  --secondary: oklch(0.15 0.03 240);
+  --secondary-foreground: oklch(0.9 0.01 240);
+  --muted: oklch(0.12 0.02 240);
+  --muted-foreground: oklch(0.65 0.02 240);
+  --accent: oklch(0.75 0.15 200);
+  --accent-foreground: oklch(0.06 0.01 240);
+  --destructive: oklch(0.65 0.25 15);
+  --destructive-foreground: oklch(0.98 0.005 240);
+  --border: oklch(0.2 0.03 240);
+  --input: oklch(0.15 0.03 240);
+  --ring: oklch(0.7 0.2 220);
+  --chart-1: oklch(0.7 0.2 220);
+  --chart-2: oklch(0.75 0.15 200);
+  --chart-3: oklch(0.65 0.25 15);
+  --chart-4: oklch(0.72 0.18 260);
+  --chart-5: oklch(0.68 0.22 180);
+  --sidebar: oklch(0.1 0.02 240);
+  --sidebar-foreground: oklch(0.95 0.01 240);
+  --sidebar-primary: oklch(0.7 0.2 220);
+  --sidebar-primary-foreground: oklch(0.06 0.01 240);
+  --sidebar-accent: oklch(0.15 0.03 240);
+  --sidebar-accent-foreground: oklch(0.9 0.01 240);
+  --sidebar-border: oklch(0.2 0.03 240);
+  --sidebar-ring: oklch(0.7 0.2 220);
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-mono;
+  }
+}
+
+/* Custom CTF animations and effects */
+@keyframes matrix-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 5px var(--accent), 0 0 10px var(--accent), 0 0 15px var(--accent);
+  }
+  50% {
+    box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent), 0 0 30px var(--accent);
+  }
+}
+
+@keyframes cyber-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes subtle-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 8px oklch(0.7 0.2 220 / 0.3), 0 0 16px oklch(0.7 0.2 220 / 0.2);
+  }
+  50% {
+    box-shadow: 0 0 12px oklch(0.7 0.2 220 / 0.4), 0 0 24px oklch(0.7 0.2 220 / 0.3);
+  }
+}
+
+@keyframes gentle-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* Adding battle animations for top 3 competitors */
+@keyframes battle-float-1 {
+  0%,
+  100% {
+    transform: translateY(0px) scale(1.1);
+  }
+  50% {
+    transform: translateY(-8px) scale(1.1);
+  }
+}
+
+@keyframes battle-float-2 {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes battle-float-3 {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes battle-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+@keyframes battle-pulse-strong {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 10px oklch(0.65 0.25 15 / 0.5);
+  }
+  50% {
+    transform: scale(1.15);
+    box-shadow: 0 0 20px oklch(0.65 0.25 15 / 0.8);
+  }
+}
+
+@keyframes battle-glow-champion {
+  0%,
+  100% {
+    box-shadow: 0 0 15px oklch(0.65 0.25 15 / 0.4), 0 0 30px oklch(0.65 0.25 15 / 0.2);
+  }
+  50% {
+    box-shadow: 0 0 25px oklch(0.65 0.25 15 / 0.6), 0 0 50px oklch(0.65 0.25 15 / 0.3);
+  }
+}
+
+@keyframes battle-glow-blue {
+  0%,
+  100% {
+    box-shadow: 0 0 10px oklch(0.7 0.2 220 / 0.4), 0 0 20px oklch(0.7 0.2 220 / 0.2);
+  }
+  50% {
+    box-shadow: 0 0 15px oklch(0.7 0.2 220 / 0.6), 0 0 30px oklch(0.7 0.2 220 / 0.3);
+  }
+}
+
+@keyframes battle-glow-cyan {
+  0%,
+  100% {
+    box-shadow: 0 0 10px oklch(0.75 0.15 200 / 0.4), 0 0 20px oklch(0.75 0.15 200 / 0.2);
+  }
+  50% {
+    box-shadow: 0 0 15px oklch(0.75 0.15 200 / 0.6), 0 0 30px oklch(0.75 0.15 200 / 0.3);
+  }
+}
+
+@keyframes team-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Adding firstblood notification animation */
+@keyframes firstblood-notification {
+  0% {
+    opacity: 0;
+    transform: translateX(100px) scale(0.8);
+  }
+  10% {
+    opacity: 1;
+    transform: translateX(0) scale(1.05);
+  }
+  20% {
+    transform: scale(1);
+  }
+  90% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-20px) scale(0.9);
+  }
+}
+
+/* Adding new animations for full-screen modal, frozen scoreboard, and leader swapping */
+@keyframes firstblood-modal-animation {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(-50px);
+  }
+  20% {
+    opacity: 1;
+    transform: scale(1.05) translateY(0);
+  }
+  30% {
+    transform: scale(1);
+  }
+  70% {
+    transform: scale(1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes frozen-element {
+  0%,
+  100% {
+    filter: brightness(0.7) hue-rotate(180deg);
+    box-shadow: 0 0 20px oklch(0.75 0.15 200 / 0.3);
+  }
+  50% {
+    filter: brightness(0.8) hue-rotate(180deg);
+    box-shadow: 0 0 30px oklch(0.75 0.15 200 / 0.5);
+  }
+}
+
+@keyframes leader-swap {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-20px) scale(0.95);
+  }
+  50% {
+    transform: translateX(20px) scale(1.05);
+  }
+  75% {
+    transform: translateX(-10px) scale(0.98);
+  }
+  100% {
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes frozen-overlay {
+  0%,
+  100% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}
+
+.matrix-glow {
+  animation: matrix-glow 2s ease-in-out infinite;
+}
+
+.cyber-pulse {
+  animation: cyber-pulse 1.5s ease-in-out infinite;
+}
+
+.subtle-glow {
+  animation: subtle-glow 3s ease-in-out infinite;
+}
+
+.gentle-pulse {
+  animation: gentle-pulse 2s ease-in-out infinite;
+}
+
+.battle-float-1 {
+  animation: battle-float-1 4s ease-in-out infinite;
+}
+
+.battle-float-2 {
+  animation: battle-float-2 3.5s ease-in-out infinite;
+}
+
+.battle-float-3 {
+  animation: battle-float-3 3s ease-in-out infinite;
+}
+
+.battle-pulse {
+  animation: battle-pulse 2s ease-in-out infinite;
+}
+
+.battle-pulse-strong {
+  animation: battle-pulse-strong 1.8s ease-in-out infinite;
+}
+
+.battle-glow-champion {
+  animation: battle-glow-champion 2.5s ease-in-out infinite;
+}
+
+.battle-glow-blue {
+  animation: battle-glow-blue 2.8s ease-in-out infinite;
+}
+
+.battle-glow-cyan {
+  animation: battle-glow-cyan 3.2s ease-in-out infinite;
+}
+
+.team-slide-in {
+  animation: team-slide-in 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.firstblood-notification {
+  animation: firstblood-notification 5s ease-out forwards;
+}
+
+.firstblood-modal-animation {
+  animation: firstblood-modal-animation 4s ease-out forwards;
+}
+
+.frozen-element {
+  animation: frozen-element 3s ease-in-out infinite;
+}
+
+.frozen-scoreboard {
+  position: relative;
+}
+
+.frozen-scoreboard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, oklch(0.75 0.15 200 / 0.1), oklch(0.75 0.15 200 / 0.05));
+  border-radius: inherit;
+  animation: frozen-overlay 2s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.leader-swap-animation {
+  animation: leader-swap 2s ease-in-out;
+}
+
+.terminal-border {
+  border: 1px solid var(--primary);
+  position: relative;
+}
+
+.terminal-border::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  background: linear-gradient(45deg, var(--primary), var(--accent), var(--primary));
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0.3;
+}
+
+.clean-border {
+  border: 1px solid oklch(0.2 0.03 240);
+  background: oklch(0.1 0.02 240 / 0.8);
+  backdrop-filter: blur(8px);
+}
+
+.winner-glow {
+  box-shadow: 0 0 20px oklch(0.65 0.25 15 / 0.4), 0 0 40px oklch(0.65 0.25 15 / 0.2);
+}

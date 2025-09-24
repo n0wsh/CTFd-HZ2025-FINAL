@@ -1,4 +1,25 @@
 services:
+  scoreboard-server:
+    build: ./scoreboard-server
+    environment:
+      - "WEBHOOK_SECRET=cde314dda67268f78747458e1a9b9677905ea5ce5d02cc1a19374c091d7db4a7"
+    restart: always
+    networks:
+      default:
+      internal:
+
+  scoreboard:
+    build: ./scoreboard
+    restart: always
+    volumes:
+      - .:/opt/CTFd:ro
+    environment:
+      - CTFD_API_URL=http://ctfd:8000/api/v1
+      - CTFD_API_KEY=ctfd_d54b2104ed895a0ca1c859c5e532f04a0996907419bb441e0fb29bb7389f7e8d
+    networks:
+        default:
+        internal:
+
   ctfd:
     build: .
     user: root
@@ -14,6 +35,8 @@ services:
       - ACCESS_LOG=-
       - ERROR_LOG=-
       - REVERSE_PROXY=true
+      - SCOREBOARD_WEBHOOK_URL=http://scoreboard-server:3000/api/webhook
+      - SCOREBOARD_WEBHOOK_SECRET=cde314dda67268f78747458e1a9b9677905ea5ce5d02cc1a19374c091d7db4a7
     volumes:
       - .data/CTFd/logs:/var/log/CTFd
       - .data/CTFd/uploads:/var/uploads
@@ -29,10 +52,14 @@ services:
     restart: always
     volumes:
       - ./conf/nginx/http.conf:/etc/nginx/nginx.conf
+      - /etc/letsencrypt:/etc/letsencrypt:ro
     ports:
       - 80:80
+      - 443:443
     depends_on:
       - ctfd
+      - scoreboard
+      - scoreboard-server
 
   db:
     image: mariadb:10.11
