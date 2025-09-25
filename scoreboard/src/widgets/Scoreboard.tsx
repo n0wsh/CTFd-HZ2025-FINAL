@@ -155,10 +155,10 @@ export const Scoreboard = ({
         setTimeLeft(remaining);
 
         // SCOREBOARD FREEZE
-        if (remaining <= 3600 && !isFrozen) {
-          setIsFrozen(true);
-          console.log("❄️ Scoreboard frozen (1 hour left)");
-        }
+        // if (remaining <= 3600 && !isFrozen) {
+        //   setIsFrozen(true);
+        //   console.log("❄️ Scoreboard frozen (1 hour left)");
+        // }
       }
     }, 1000);
 
@@ -273,11 +273,11 @@ export const Scoreboard = ({
                   <span className="text-cyan-400 ml-2 text-xl">❄️ FROZEN</span>
                 )}
               </h1>
-              <p className="text-muted-foreground text-pretty text-sm">
+              {/* <p className="text-muted-foreground text-pretty text-sm">
                 {isFrozen
                   ? "Scoreboard is frozen for the final hour!"
                   : "Rankings update in real-time. Hack your way to the top!"}
-              </p>
+              </p> */}
             </div>
           </div>
           {/* <div className="flex gap-2">
@@ -343,13 +343,13 @@ export const Scoreboard = ({
                     </div>
                   </div>
                 </div>
-                <h3 className="text-lg font-bold mb-1">
+                <h3 className="text-xl font-bold mb-1">
                   {topPlayers[1].teamname}
                 </h3>
                 <div className="text-blue-400 font-bold text-base mb-3">
-                  {"Rank #2"}
+                  {"Байр #2"}
                 </div>
-                <Card className="bg-blue-500/10 border-blue-400/20 p-3">
+                <Card className="bg-blue-500/10 border-blue-400/20 p-3 gap-2">
                   <div className="flex justify-between items-center text-xs">
                     <span className="text-muted-foreground">
                       Сүүлд бодсон огноо
@@ -360,7 +360,7 @@ export const Scoreboard = ({
                   </div>
                   <div className="flex justify-between items-center text-xs mt-1">
                     <span className="text-muted-foreground">Нийт оноо</span>
-                    <span className="text-blue-400 font-mono text-sm">
+                    <span className="text-blue-400 font-mono text-lg">
                       {topPlayers[1].score.toLocaleString()}
                     </span>
                   </div>
@@ -389,9 +389,9 @@ export const Scoreboard = ({
                   {topPlayers[0].teamname}
                 </h3>
                 <div className="text-orange-400 font-bold text-lg mb-4">
-                  {"Champion #1"}
+                  {"Байр #1"}
                 </div>
-                <Card className="bg-orange-500/10 border-orange-400/20 p-3">
+                <Card className="bg-orange-500/10 border-orange-400/20 p-3 gap-2">
                   <div className="flex justify-between items-center text-xs">
                     <span className="text-muted-foreground">
                       Сүүлд бодсон огноо
@@ -402,7 +402,7 @@ export const Scoreboard = ({
                   </div>
                   <div className="flex justify-between items-center text-xs mt-1">
                     <span className="text-muted-foreground">Нийт оноо</span>
-                    <span className="text-orange-400 font-mono font-bold text-sm">
+                    <span className="text-orange-400 font-mono font-bold text-lg">
                       {topPlayers[0].score.toLocaleString()}
                     </span>
                   </div>
@@ -427,13 +427,13 @@ export const Scoreboard = ({
                     </div>
                   </div>
                 </div>
-                <h3 className="text-lg font-bold mb-1">
+                <h3 className="text-xl font-bold mb-1">
                   {topPlayers[2].teamname}
                 </h3>
                 <div className="text-cyan-400 font-bold text-base mb-3">
-                  {"Rank #3"}
+                  {"Байр #3"}
                 </div>
-                <Card className="bg-cyan-500/10 border-cyan-400/20 p-3">
+                <Card className="bg-cyan-500/10 border-cyan-400/20 p-3 gap-2">
                   <div className="flex justify-between items-center text-xs">
                     <span className="text-muted-foreground">
                       Сүүлд бодсон огноо
@@ -444,7 +444,7 @@ export const Scoreboard = ({
                   </div>
                   <div className="flex justify-between items-center text-xs mt-1">
                     <span className="text-muted-foreground">Нийт оноо</span>
-                    <span className="text-cyan-400 font-mono text-sm">
+                    <span className="text-cyan-400 font-mono text-lg">
                       {topPlayers[2].score.toLocaleString()}
                     </span>
                   </div>
@@ -459,7 +459,7 @@ export const Scoreboard = ({
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           <div className="lg:col-span-1">
             <h3 className="text-lg font-bold mb-4 text-primary">
-              Competition Stats
+              Тэмцээний мэдээлэл
             </h3>
             <div className="space-y-4">
               <Card className="clean-border p-4">
@@ -468,7 +468,7 @@ export const Scoreboard = ({
                   <div>
                     <div className="text-lg font-bold text-blue-400">28</div>
                     <div className="text-muted-foreground text-xs">
-                      Active Hackers
+                      Оролцогчид
                     </div>
                   </div>
                 </div>
@@ -508,7 +508,7 @@ export const Scoreboard = ({
                       {formatTime(timeLeft)}
                     </div>
                     <div className="text-muted-foreground text-xs">
-                      Time Remaining
+                     Үлдсэн хугацаа
                     </div>
                   </div>
                 </div>
@@ -517,7 +517,7 @@ export const Scoreboard = ({
           </div>
 
           <div className="lg:col-span-3">
-            <div className="flex items-center gap-3 mb-6">
+            {/* <div className="flex items-center gap-3 mb-6">
               <div className="w-3 h-3 bg-accent rounded-full gentle-pulse" />
               <h2 className="text-xl font-bold">Бусад багууд</h2>
               <Badge
@@ -526,9 +526,9 @@ export const Scoreboard = ({
               >
                 {"Ranks 4-10"}
               </Badge>
-            </div>
+            </div> */}
 
-            <div className="space-y-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-1">
               {recentActivity.map((player, index) => (
                 <Card
                   key={player.id}
@@ -548,7 +548,7 @@ export const Scoreboard = ({
                         </div>
                       </div>
                       <div>
-                        <h4 className="font-bold text-base">
+                        <h4 className="font-bold text-base text-xl">
                           {player.teamname}
                         </h4>
                         <div className="text-xs text-muted-foreground">
@@ -567,7 +567,7 @@ export const Scoreboard = ({
                         {player?.lastSolvedCategory}
                       </Badge>
                       <div className="text-right">
-                        <div className="text-xs font-medium">
+                        <div className="font-bold text-xl">
                           {player.score.toLocaleString()} оноо
                         </div>
                         <div className="text-xs text-muted-foreground">
