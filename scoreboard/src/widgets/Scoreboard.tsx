@@ -155,10 +155,10 @@ export const Scoreboard = ({
         setTimeLeft(remaining);
 
         // SCOREBOARD FREEZE
-        // if (remaining <= 3600 && !isFrozen) {
-        //   setIsFrozen(true);
-        //   console.log("❄️ Scoreboard frozen (1 hour left)");
-        // }
+        if (remaining <= 3600 && !isFrozen) {
+          setIsFrozen(true);
+          console.log("❄️ Scoreboard frozen (1 hour left)");
+        }
       }
     }, 1000);
 
