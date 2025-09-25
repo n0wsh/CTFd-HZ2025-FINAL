@@ -5,6 +5,7 @@ import { fetchScoreboard, ScoreboardItem } from "@/server/scoreboard";
 import { fetchCTFStatus } from "@/server/status";
 import { Scoreboard } from "@/widgets/Scoreboard";
 import { CTFTimeClient } from "@/widgets/CTFTime";
+import { RevealResult } from "@/widgets/RevealResult";
 
 export type ScoreboardInitialData = {
   scoreboard: ScoreboardItem[];
@@ -12,6 +13,9 @@ export type ScoreboardInitialData = {
 
 export default async function Home() {
   const { startAt, endAt } = await fetchCTFStatus();
+  const now = Date.now();
+
+  const initialScoreboard = await fetchScoreboard();
 
   // if (!started) {
   //   return (
@@ -24,7 +28,13 @@ export default async function Home() {
   //   );
   // }
 
-  const initialScoreboard = await fetchScoreboard();
+  if (endAt < now) {
+    return (
+      <>
+        <RevealResult initialScoreboard={initialScoreboard} endAt={endAt} />
+      </>
+    );
+  }
 
   return (
     <>
